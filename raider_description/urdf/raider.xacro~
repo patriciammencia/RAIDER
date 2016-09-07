@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="raider" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<selfCollide>true</selfCollide>
+<xacro:property name="PI" value="3.1415926535897931"/>
+<xacro:property name="mass_servo" value="55e-3"/>
+
+<xacro:include filename="$(find raider_description)/urdf/raider.gazebo" />
+<xacro:include filename="$(find raider_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find raider_description)/urdf/parts/leg.xacro" />
+<xacro:include filename="$(find raider_description)/urdf/parts/hip.xacro" />
+<xacro:include filename="$(find raider_description)/urdf/parts/chest.xacro" />
+<xacro:include filename="$(find raider_description)/urdf/parts/head.xacro" />
+<xacro:include filename="$(find raider_description)/urdf/parts/arm.xacro" />
+
+<link name="base_link"/>
+
+<joint name="base_joint_left" type="fixed">
+  <parent link="base_link"/>
+  <child link="hip_chassis"/>
+ <origin xyz="0 0 0"/>
+</joint>
+
+<joint name="upperhip_chest" type="fixed">
+  <dynamics damping="0.0" friction="0.0"/>
+  <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
+  <parent link="upper_hip"/>
+  <child link="chest_chassis"/>
+  <origin xyz="0 0 76.94e-3"/>
+  <!--origin xyz="0 0 76.94e-3"/-->
+ <axis xyz="0 0 1"/>
+</joint>
+
+<!-- Hip -->
+<hip/>
+
+<!-- Legs -->
+<leg lr="left" tY="-1"/>
+
+<leg lr="right" tY="1"/>
+
+<!-- Chest -->
+<chest />
+
+<!-- Head -->
+<joint name="chest_microservo" type="fixed">
+  <parent link="chest_chassis"/>
+  <child link="microservo"/>
+  <origin xyz="31.26e-3 0 -76.94e-3"/> 
+</joint>
+
+<head />
+
+<!--Arm right -->
+<joint name="servo_shoulder_right" type="fixed">
+  <dynamics damping="0.0" friction="0.0"/>
+  <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
+  <parent link="servo_shoulder_right"/>
+  <child link="shoulder_right"/>
+  <origin xyz="19.74e-3 3.3e-3 119.94e-3"/> 
+ <axis xyz="1 0 0"/>
+</joint>
+
+<arm lr="right" tY="-1"/>
+
+<!--Arm right -->
+<joint name="servo_shoulder_left" type="fixed">
+  <dynamics damping="0.0" friction="0.0"/>
+  <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
+  <parent link="servo_shoulder_left"/>
+  <child link="shoulder_left"/>
+  <origin xyz="-84.14e-3 3.3e-3 119.94e-3"/> 
+ <axis xyz="1 0 0"/>
+</joint>
+
+<arm lr="left" tY="1"/>
+
+</robot>
+

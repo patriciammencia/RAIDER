@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="raider">
+  <macro name="leg" params="lr tY">
+
+    <joint name="frontankle_foot_${lr}" type="fixed">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="${PI/2}" lower="${-PI/2}" velocity="3" effort="100"/>
+      <parent link="back_ankle_${lr}"/>
+      <child link="foot_${lr}"/>
+      <origin xyz="${tY*-25e-3} 0 -1.25e-3" rpy="0 0 ${tY*PI/2 + PI/2}"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="foot_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 4.06e-3 173e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/foot_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 4.06e-3 173e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/foot_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*34.218262e-3} -2.616092e-3 -194.773895e-3" rpy="0 0 0"/>
+        <mass value="31e-3"/>
+        <inertia ixx="22.27440675" ixy="${tY*(-0.003825417)}" ixz="${tY*(0.290640621)}" iyy="8.364372176" iyz="0.190691357" izz="26.713433444"/>
+      </inertial>
+    </link>
+
+    <joint name="frontankle_servofoot_${lr}" type="fixed">
+      <parent link="servo_foot_${lr}"/>
+      <child link="front_ankle_${lr}"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="front_ankle_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/front_ankle_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/front_ankle_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*32.000015} 11.489568e-3 -158.031693e-3" rpy="0 0 0"/>
+        <mass value="7e-3"/>
+        <inertia ixx="0.998184643" ixy="${tY*0.00000098}" ixz="${tY*0.000000471}" 
+                 iyy="1.627441646" iyz="0.005153015" izz="0.66988573"/>
+      </inertial>
+    </link>
+
+    <link name="servo_foot_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_foot_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_foot_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*33.059711e-3} -4.057295e-3 -160.200577e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10159758/41810.285156}" ixy="${mass_servo*tY*(-1954.405151)/41810.285156}" ixz="${mass_servo*tY*86838.78125/41810.285156}" iyy="${mass_servo*12035474/41810.285156}" iyz="${mass_servo*(-895.013855)/41810.285156}" izz="${mass_servo*6634505.5/41810.285156}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_backankle_${lr}" type="fixed">
+      <origin xyz="0 0 0"/>
+      <parent link="servo_foot_${lr}"/>
+      <child link="back_ankle_${lr}"/>
+    </joint>
+
+    <link name="back_ankle_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/back_ankle_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/back_ankle_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY* 32.000099e-3} -25.044254e-3 -149.531372e-3" rpy="0 0 0"/>
+        <mass value="5e-3"/>
+        <inertia ixx="0.409812725" ixy="${tY*(-0.000005505)}" ixz="${tY*0.000001444}" iyy="1.2913425" iyz="0.013904179" izz="1.050779904"/>
+      </inertial>
+    </link>
+
+    <joint name="servo_footback_foot_${lr}" type="fixed">
+      <parent link="back_ankle_${lr}"/>
+      <child link="servo_footback_${lr}"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="servo_footback_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_footback_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 171.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_footback_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*31.997292e-3} -44.940292e-3 -160.200577e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*12049500/41810.285156}" ixy="${mass_servo*tY*1957.543335/41810.285156}" ixz="${mass_servo*tY*899.625366/41810.285156}" iyy="${mass_servo*10171751/41810.285156}" iyz="${mass_servo*89138.367188/41810.285156}" izz="${mass_servo*6641419/41810.285156}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_lowerleg_${lr}" type="fixed">
+   <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="1" lower="-1" velocity="3" effort="100"/>
+      <origin xyz="0 0 -75e-3" rpy="0 0 0"/>
+      <parent link="lower_leg_${lr}"/>
+      <child link="servo_foot_${lr}"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="lower_leg_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 96.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/lower_leg_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 96.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/lower_leg_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*33.664700e-3} 9.614051e-3 -125.379684e-3" rpy="0 0 0"/>
+        <mass value="44e-3"/>
+        <inertia ixx="40.466879268" ixy="${tY*0.767591492}" ixz="${tY*0.904685905}" iyy="49.378616404" iyz="-3.268945377" izz="24.910608508"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_lowerleg_servolowerknee${lr}" type="fixed">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="${PI/2}" lower="${-PI/2}" velocity="3" effort="100"/>
+      <origin xyz="0 0 -32e-3" rpy="0 0 0"/>
+      <parent link="servo_lower_knee_${lr}"/>
+      <child link="lower_leg_${lr}"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="servo_lower_knee_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_lower_knee_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_lower_knee_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*33.059711e-3} -16.859426e-3 -97.997299e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10159758/41810.289062}" ixy="${mass_servo*tY*(-86838)/41810.289062}" ixz="${mass_servo*tY*(-1954.375122)/41810.289062}" iyy="${mass_servo*6634506/41810.289062}" iyz="${mass_servo*895.015137/41810.289062}" izz="${mass_servo*12035475/41810.289062}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servolowerknee_kneedamper1_${lr}" type="fixed">
+      <origin xyz="0 0 0"/>
+      <parent link="knee_damper_1_${lr}"/>
+      <child link="servo_lower_knee_${lr}"/>
+    </joint>
+
+    <link name="knee_damper_1_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/knee_damper${lr}_1.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/knee_damper${lr}_1.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*49.524082e-3} -31.720390e-3 -78.538048e-3" rpy="0 0 0"/>
+        <mass value="2e-3"/>
+        <inertia ixx="0.423026673" ixy="${tY*0.007535722}" ixz="${tY*-0.00201741}" iyy="0.136987356" iyz="0.067385341" izz="0.290494473"/>
+      </inertial>
+    </link>
+
+    <link name="knee_damper_2_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/knee_damper${lr}_2.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/knee_damper${lr}_2.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*14.675918e-3} -31.720392e-3 -78.538040e-3" rpy="0 0 0"/>
+        <mass value="2e-3"/>
+        <inertia ixx="${(2e-3)*365223.125/1726.713501}" ixy="${tY*(2e-3)*-6505.744629/1726.713501}" ixz="${tY*(2e-3)*1741.682983/1726.713501}" iyy="${(2e-3)*118269.359375/1726.713501}" iyz="${(2e-3)*58177.648438/1726.713501}" izz="${(2e-3)*250800.671875/1726.713501}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_damper2leg_servoupperknee_${lr}" type="fixed">
+      <origin xyz="0 0 0"/>
+      <parent link="servo_upper_knee_${lr}"/>
+      <child link="knee_damper_2_${lr}"/>
+    </joint>
+
+    <joint name="joint_damper1leg_servoupperknee_${lr}" type="fixed">
+      <origin xyz="0 0 0"/>
+      <parent link="servo_upper_knee_${lr}"/>
+      <child link="knee_damper_1_${lr}"/>
+    </joint>
+
+    <link name="servo_upper_knee_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_upper${lr}_knee.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 64.75e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_upper${lr}_knee.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*33.059711e-3} -16.859426e-3 -65.997299e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10171693/41834.785156}" ixy="${mass_servo*tY*(-89132.875)/41834.785156}" ixz="${mass_servo*tY*(-1956.631226)/41834.785156}" iyy="${mass_servo*6641426.5/41834.785156}" iyz="${mass_servo*898.551575/41834.785156}" izz="${mass_servo*12049564/41834.785156}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint${lr}_servoupperknee_upperleg" type="fixed">
+      <dynamics damping="0.0" friction="0.0"/>
+      <origin xyz="0 0 -73.75e-3" rpy="0 0 0"/>
+      <limit upper="${PI/2}" lower="${-PI/2}" velocity="3" effort="100"/>
+      <parent link="upper_leg_${lr}"/>
+      <child link="servo_upper_knee_${lr}"/>
+    </joint>
+
+    <link name="upper_leg_${lr}">
+      <collision>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/upper_leg_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-56.94e-3} 4.06e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/upper_leg_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*33.380638e-3} -0.118964e-3 -33.265591e-3" rpy="0 0 0"/>
+        <mass value="23e-3"/>
+        <inertia ixx="16.287494127" ixy="${tY*0.039940722}" ixz="${tY*(-0.048285696)}" iyy="24.786351073" iyz="1.256185001" izz="12.170186251"/>
+      </inertial>
+    </link>
+
+    <joint name="joint${lr}_servoupperfront_upperleg" type="fixed">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="${PI/2}" lower="${-PI/2}" velocity="3" effort="100"/>
+      <origin xyz="${tY*24.94e-3} 56.94e-3 0" rpy="0 0 0"/>
+      <parent link="servo_upper_front_${lr}"/>
+      <child link="upper_leg_${lr}"/>
+    </joint>
+
+    <link name="servo_upper_front_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_upper${lr}_front.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_upper${lr}_front.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*33.259712e-3} -4.062710e-3 -3.799430e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10159758/41810.289062}" ixy="${mass_servo*tY*1954.408447/441810.289062}" ixz="${mass_servo*tY*(-86838.867188)/41810.289062}" iyy="${mass_servo*12035474/41810.289062}" iyz="${mass_servo*-895.017456/41810.289062}" izz="${mass_servo*6634506/41810.289062}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servoupperfront_tob${lr}" type="fixed">
+      <origin xyz="0 0 0"/>
+      <parent link="servo_upper_front_${lr}"/>
+      <child link="tob_${lr}"/>
+    </joint>
+
+    <link name="tob_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/tob_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/tob_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*31.999987e-3} 12.549569e-3 -5.968293e-3" rpy="0 0 0"/>
+        <mass value="7e-3"/>
+        <inertia ixx="0.998184661" ixy="${tY*-0.000001004}" ixz="${tY*0.000001021}" iyy="1.627441646" iyz="-0.005152814" izz="0.669885346"/>
+      </inertial>
+    </link>
+
+    <joint name="joint${lr}_servoupperfront_groin2" type="fixed">
+      <origin xyz="0 0 0"/>
+      <parent link="groin2_${lr}"/>
+      <child link="servo_upper_front_${lr}"/>
+    </joint>
+
+    <link name="groin2_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/groin2_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/groin2_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*16.159353e-3} -35.801258e-3 -7.292182e-3" rpy="0 0 0"/>
+        <mass value="5e-3"/>
+        <inertia ixx="0.964450567" ixy="${tY*(-0.032521998)}" ixz="${tY*0.003002097}" iyy="0.377541101" iyz="0.088795829" izz="0.612968817"/>
+      </inertial>
+    </link>
+
+    <joint name="joint${lr}_servoupperback_groin1" type="fixed">
+      <origin xyz="0 ${tY*21.89e-3 + 21.89e-3} 0" rpy="0 0 ${-tY*PI/2 - PI/2}"/>
+      <parent link="servo_upper_back_${lr}"/>
+      <child link="groin2_${lr}"/>
+    </joint>
+
+    <link name="groin1_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/groin1_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/groin1_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*47.840645e-3} -35.801262e-3 -7.292187e-3" rpy="0 0 0"/>
+        <mass value="5e-3"/>
+        <inertia ixx="0.964451283" ixy="${tY*0.032521697}" ixz="${tY*(-0.003002165)}" iyy="0.377541141" iyz="0.08879578" izz="0.612969334"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servoupperback_groin1_${lr}" type="fixed">
+      <origin xyz="0 ${tY*21.89e-3 + 21.89e-3} 0" rpy="0 0 ${-tY*PI/2 - PI/2}"/>
+      <parent link="servo_upper_back_${lr}"/>
+      <child link="groin1_${lr}"/>
+    </joint>
+
+    <link name="servo_upper_back_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_upper${lr}_back.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 61e-3 -9e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/servo_upper${lr}_back.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*31.997288e-3} -37.115585e-3 -3.810416e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*12035472/41810.289062}" ixy="${mass_servo*tY*(-1954.408440820347)/441810.289062}" ixz="${mass_servo*tY*(-895.014343)/41810.289062}" iyy="${mass_servo*10159758/41810.289062}" iyz="${mass_servo*86838.570312/41810.289062}" izz="${mass_servo*6634508.5/41810.289062}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servoupperback_legbracket_${lr}" type="fixed">
+      <limit upper="${PI/2}" lower="${-PI/2}" velocity="3" effort="100"/>
+      <origin xyz="0 ${tY*21.89e-3 - 18.11e-3} ${tY*-22e-3}" rpy="0 ${tY*PI/2 - PI/2} ${tY*PI/2 + PI/2}"/>
+      <parent link="leg_bracket_${lr}"/>
+      <child link="servo_upper_back_${lr}"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="leg_bracket_${lr}">
+      <collision>
+        <origin xyz="${tY*-32e-3} 21e-3 -31e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/leg_bracket_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*-32e-3} 21e-3 -31e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/leg_${lr}/leg_bracket_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*31.468872e-3} -22.709967e-3 27.662817e-3" rpy="0 0 0"/>
+        <mass value="17e-3"/>
+        <inertia ixx="14.953408409" ixy="${tY*0.236958746}" ixz="${tY*0.081847589}" iyy="0.281864658" iyz="-0.318501245" izz="14.972208875"/>
+      </inertial>
+    </link>
+
+  </macro>
+</robot>

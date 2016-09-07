@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="raider">
+  <macro name="head">
+
+    <link name="microservo">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/microservo.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/microservo.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-34.699566e-3 6.703261e-3 139.939987e-3" rpy="0 0 0"/>
+        <mass value="13.4e-3"/>
+        <inertia ixx="0.79631024" ixy="0.071080342" ixz="0.000010505" iyy="0.707342537" iyz="-0.000000896" izz="1.203373945"/>
+      </inertial>
+    </link>
+
+    <joint name="chest_head" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="0" lower="-1" velocity="3" effort="100"/>
+      <parent link="chest_chassis"/>
+      <child link="head"/>
+      <origin xyz="31.26e-3 12.1e-3 63e-3"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="head">
+      <collision>
+        <origin xyz="0 -12.1e-3 -139.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/head.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 -12.1e-3 -139.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/head.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-31.180738e-3 -2.366833e-3 164.260635e-3" rpy="0 0 0"/>
+        <mass value="44e-3"/>
+        <inertia ixx="23.419764683" ixy="-0.17967725" ixz="0.136503491" iyy="17.645258196" iyz="0.830629778" izz="26.684106335"/>
+      </inertial>
+    </link>
+
+    <joint name="arm_microservo_joint" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="head"/>
+      <child link="arm_microservo"/>
+      <origin xyz="0 -12.1e-3 -139.94e-3"/>
+    </joint>
+
+    <link name="arm_microservo">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/arm_microservo.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/arm_microservo.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-49.879631e-3 9.112244e-3 143.111343e-3" rpy="0 0 0"/>
+        <mass value="1e-3"/>
+        <inertia ixx="0.034414067" ixy="-0.002039668" ixz="0.001999204" iyy="0.017986123" iyz="0.014190635" izz="0.01857552"/>
+      </inertial>
+    </link>
+
+    <joint name="head_chassis_lifecam" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="head"/>
+      <child link="chassis_lifecam"/>
+      <origin xyz="0 -12.1e-3 -139.94e-3"/>
+    </joint>
+
+    <link name="chassis_lifecam">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/chassis_lifecam.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/chassis_lifecam.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-31.209848e-3 19.280575e-3 167.859589e-3" rpy="0 0 0"/>
+        <mass value="3e-3"/>
+        <inertia ixx="0.151655121" ixy="0.000177538" ixz="-0.001218298" iyy="0.384780168" iyz="-0.000285021" izz="0.278011012"/>
+      </inertial>
+    </link>
+    <joint name="cover_head" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="head"/>
+      <child link="cover_head"/>
+      <origin xyz="0 -12.1e-3 -139.94e-3"/>
+    </joint>
+
+    <link name="cover_head">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/cover_head.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/cover_head.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-24.260002e-3 -35.900002e-3 161.992737e-3" rpy="0 0 0"/>
+        <mass value="3e-4"/>
+        <inertia ixx="0.001401112" ixy="0.000000002" ixz="-0.00000033" iyy="0.011750281" iyz="0.000000934" izz="0.010548865"/>
+      </inertial>
+    </link>
+
+    <joint name="lifecam_to_chassis" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chassis_lifecam"/>
+      <child link="lifecam"/>
+      <origin xyz="-31.5e-3 25e-3 167.9e-3" rpy="0 0 ${PI/2}"/>
+    </joint>
+
+    <link name="lifecam">
+      <collision>
+        <origin xyz="-25e-3 -31.5e-3 -167.9e-3" rpy="0 0 ${-PI/2}"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/lifecam.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="-25e-3 -31.5e-3 -167.9e-3" rpy="0 0 ${-PI/2}"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/head/lifecam.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-31.260019e-3 13.105232e-3 167.940002e-3" rpy="0 0 0"/>
+        <mass value="95.3e-3"/>
+        <inertia ixx="6.166010606" ixy="-0.000004779" ixz="0.000019444" iyy="3.256684062" iyz="0.000002913" izz="6.494934716"/>
+      </inertial>
+    </link>
+  </macro>
+</robot>

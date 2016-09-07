@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sdf version="1.4">
+<world name="default">
+    <include>
+   <uri>model://ground_plane</uri>
+ </include>
+
+ <include>
+   <uri>model://sun</uri>
+ </include>
+    
+      <light name='user_point_light_1' type='point'>
+      <pose frame=''>2 -0.544425 1 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+ <light name='user_point_light_0' type='point'>
+      <pose frame=''>1 0 0.5 0 -0 0</pose>
+      <diffuse>0.498039 0.498039 0.498039 1</diffuse>
+      <specular>0.0980392 0.0980392 0.0980392 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+ 
+    <model name="Campo">
+      <static>true</static>
+	  
+      <link name="Suelo">
+        <pose>0.15 0 0.015 0 0 0</pose>
+        <collision name="CollisionCampo">
+          <geometry>
+            <mesh>
+	     <uri>model://Sumo.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualCampo">
+          <geometry>
+            <mesh>
+              <uri>model://Sumo.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+    </model>
+</sdf>

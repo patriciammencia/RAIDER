@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<sdf version="1.4">
+<world name="default">
+    <include>
+   <uri>model://ground_plane</uri>
+ </include>
+
+ <include>
+   <uri>model://sun</uri>
+ </include>
+    
+      <light name='user_point_light_0' type='point'>
+      <pose frame=''>2 -0.544425 1 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+
+ <light name='user_point_light_0' type='point'>
+      <pose frame=''>0 0 0.5 0 -0 0</pose>
+      <diffuse>0.498039 0.498039 0.498039 1</diffuse>
+      <specular>0.0980392 0.0980392 0.0980392 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <direction>0 0 -1</direction>
+    </light>
+ 
+    <model name="Campo">
+      <static>true</static>
+	  
+      <link name="Suelo">
+        <pose>0 0 0 0 0 0</pose>
+        <collision name="CollisionCampo">
+          <geometry>
+            <mesh>
+	     <uri>file://Suelo.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualCampo">
+          <geometry>
+            <mesh>
+              <uri>file://Suelo.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+      
+       <link name="ParedW">
+        <pose>0 1.015 0.265 0 0 3.14159265358979323846</pose>
+        <collision name="CollisionParedW">
+          <geometry>
+            <mesh>
+              <uri>file://ParedW.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualParedW">
+          <geometry>
+            <mesh>
+              <uri>file://ParedW.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+   <link name="ParedE">
+        <pose>0 -1.015 0.265 0 0 0</pose>
+        <collision name="CollisionParedE">
+          <geometry>
+            <mesh>
+              <uri>file://ParedE.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualParedE">
+          <geometry>
+            <mesh>
+              <uri>file://ParedE.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+    <link name="ParedS">
+        <pose>-1.265 0 0.265 0 0 0</pose>
+        <collision name="CollisionParedS">
+          <geometry>
+            <mesh>
+              <uri>file://ParedS.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualParedS">
+          <geometry>
+            <mesh>
+              <uri>file://ParedS.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+    <link name="ParedN">
+        <pose>1.265 0 0.265 0 0 0</pose>
+        <collision name="CollisionParedN">
+          <geometry>
+            <mesh>
+              <uri>file://ParedN.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualParedN">
+          <geometry>
+            <mesh>
+              <uri>file://ParedN.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+    <link name="Obstacle45R">
+        <pose>0.5 0 0.265 0 0 1.570796327</pose>
+        <collision name="CollisionObstacle45R">
+          <geometry>
+            <mesh>
+              <uri>file://45R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle45R">
+          <geometry>
+            <mesh>
+              <uri>file://45R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle45L">
+        <pose>-0.7 -0.7 0.265 0 0 -0.785398163</pose>
+        <collision name="CollisionObstacle45L">
+          <geometry>
+            <mesh>
+              <uri>file://45L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle45L">
+          <geometry>
+            <mesh>
+              <uri>file://45L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle90R">
+        <pose>0 -0.6 0.265 0 0 0</pose>
+        <collision name="CollisionObstacle90R">
+          <geometry>
+            <mesh>
+              <uri>file://90R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle90R">
+          <geometry>
+            <mesh>
+              <uri>file://90R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle90L">
+        <pose>-0.8 0.8 0.265 0 0 -2.35619449</pose>
+        <collision name="CollisionObstacle90L">
+          <geometry>
+            <mesh>
+              <uri>file://90L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle90L">
+          <geometry>
+            <mesh>
+              <uri>file://90L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle135R">
+        <pose>-1 00 0.265 0 0 -1.570796327</pose>
+        <collision name="CollisionObstacle135R">
+          <geometry>
+            <mesh>
+              <uri>file://135R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle135R">
+          <geometry>
+            <mesh>
+              <uri>file://135R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle135L">
+        <pose>0.8 0.8 0.265 0 0 2.35619449</pose>
+        <collision name="CollisionObstacle135L">
+          <geometry>
+            <mesh>
+              <uri>file://135L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle135L">
+          <geometry>
+            <mesh>
+              <uri>file://135L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle180R">
+        <pose>0.7 -0.7 0.265 0 0 0.785398163</pose>
+        <collision name="CollisionObstacle180R">
+          <geometry>
+            <mesh>
+              <uri>file://180R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle180R">
+          <geometry>
+            <mesh>
+              <uri>file://180R.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+
+<link name="Obstacle180L">
+        <pose>0 0.6 0.265 0 0 3.1415</pose>
+        <collision name="CollisionObstacle180L">
+          <geometry>
+            <mesh>
+              <uri>file://180L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="VisualObstacle180L">
+          <geometry>
+            <mesh>
+              <uri>file://180L.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <cast_shadows>false</cast_shadows>
+        </visual>
+      </link>
+      
+    </model>
+</sdf>

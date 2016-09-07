@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="raider">
+  <macro name="chest">
+
+    <link name="chest_chassis">
+      <collision>
+        <origin xyz="31.26e-3 0 -76.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/chest.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="31.26e-3 0 -76.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/chest.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-30.867216e-3 -3.980905e-3 103.660454e-3" rpy="0 0 0"/>
+        <mass value="69e-3"/>
+        <inertia ixx="68.633104082" ixy="-0.247155947" ixz="-1.001142952" iyy="111.479482676" iyz="-2.775691149" izz="106.026365641"/>
+      </inertial>
+    </link>
+
+    <joint name="battery_servohip_middle" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="servo_hip_middle"/>
+      <child link="battery_support"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="battery_support">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/battery_support.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/battery_support.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="0 -51.127079e-3 258.000061e-3" rpy="0 0 0"/>
+        <mass value="10e-3"/>
+        <inertia ixx="3.170596051" ixy="-0.000000784" ixz="-0000001" iyy="5.376089166" iyz="0.000012792" izz="3.687439427"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_battery_support" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="battery_support"/>
+      <child link="battery"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="battery">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/battery.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/battery.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-30.197001e-3 -44.700001e-3 91.440002e-3" rpy="0 0 0"/>
+        <mass value="158e-3"/>
+        <inertia ixx="22109.350504618" ixy="-0.001350018" ixz="0.003879992" iyy="128618.785627577" iyz="0.037398901" izz="122602.078416133"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_accelerometer_chest" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chest_chassis"/>
+      <child link="accelerometer"/>
+      <origin xyz="30.67e-3 -25.94e-3 -4e-3"/>
+    </joint>
+    
+  <!--joint name="joint_accelerometer_chest" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="0" lower="0" velocity="0" effort="100"/>
+      <parent link="chest_chassis"/>
+      <child link="accelerometer"/>
+      <origin xyz="30.67e-3 -25.94e-3 -4e-3"/>
+      <axis xyz="0 1 0"/>
+    </joint-->
+
+    <link name="accelerometer">
+      <collision>
+        <origin xyz="0.67e-3 25.94e-3 -149.88e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/accelerometer.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0.67e-3 25.94e-3 -149.88e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/accelerometer.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-1.480880e-3 -27.624779e-3 81.529266e-3" rpy="0 0 0"/>
+        <mass value="1e-3"/>
+        <inertia ixx="0.021407978" ixy="-0.000455369" ixz="0.000088787" iyy="0.050323934" iyz="0.000335926" izz="0.07141742"/>
+      </inertial>
+    </link>
+
+    <joint name="servoshoulderleft_chest" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chest_chassis"/>
+      <child link="servo_shoulder_left"/>
+      <origin xyz="31.26e-3 0 -76.94e-3"/>
+    </joint>
+
+    <link name="servo_shoulder_left">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/servo_shoulder_left.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/servo_shoulder_left.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-63.315582e-3 3.302713e-3 107.129585e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10159775/41810.292969}" ixy="${mass_servo*1955.209106/41810.292969}" ixz="${mass_servo*86846.789062/41810.292969}" iyy="${mass_servo*12035494/41810.292969}" iyz="${mass_servo*894.308777/41810.292969}" izz="${mass_servo*6634501/41810.292969}"/>
+      </inertial>
+    </link>
+
+    <joint name="servoshoulderright_chest" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chest_chassis"/>
+      <child link="servo_shoulder_right"/>
+      <origin xyz="31.26e-3 0 -76.94e-3"/>
+    </joint>
+
+    <link name="servo_shoulder_right">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/servo_shoulder_right.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/servo_shoulder_right.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="0.799711e-3 3.297292e-3 107.140572e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10171655/41810.292969}" ixy="${mass_servo*1956.694946/41810.292969}" ixz="${mass_servo*-89133.1875/41810.292969}" iyy="${mass_servo*12049550/41810.292969}" iyz="${mass_servo*-898.128174 /41810.292969}" izz="${mass_servo*6641424/41810.292969}"/>
+      </inertial>
+    </link>
+
+    <!--joint name="ultrasonic_chest" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chest_chassis"/>
+      <child link="ultrasonic_sensor"/>
+      <origin xyz="2.26e-3 27.4e-3 30e-3"/>
+    </joint-->
+
+  <joint name="ultrasonic_chest" type="fixed">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="0" lower="0" velocity="0" effort="100"/>
+      <parent link="chest_chassis"/>
+      <child link="ultrasonic_sensor"/>
+      <origin xyz="2.26e-3 27.4e-3 30e-3" rpy="0 0 ${PI/2}"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+
+    <link name="ultrasonic_sensor">
+      <collision>
+        <origin xyz="-27.5e-3 -27.4e-3 -106e-3" rpy="0 0 ${-PI/2}"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/ultrasonic.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="-27.5e-3 -27.4e-3 -106e-3" rpy="0 0 ${-PI/2}"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/ultrasonic.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-28.759998e-3 27.106962e-3 106.563263e-3" rpy="0 0 0"/>
+        <mass value="10e-3"/>
+        <inertia ixx="0.466992314" ixy="0.000000648" ixz="-0.000002151" iyy="2.144495716" iyz="0.006837363" izz="0.000208781"/>
+      </inertial>
+    </link>
+
+    <joint name="compass_chest" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chest_chassis"/>
+      <child link="compass"/>
+      <origin xyz="-42.52e-3 0 58.46e-3"/>
+    </joint>
+
+  <!--joint name="compass_chest" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="0" lower="0" velocity="0" effort="100"/>
+      <parent link="chest_chassis"/>
+      <child link="compass"/>
+      <origin xyz="-42.52e-3 0 58.46e-3"/>
+      <axis xyz="0 1 0"/>
+    </joint-->
+
+    <link name="compass">
+      <collision>
+        <origin xyz="73.78e-3 0 -135.4e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/compass.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="73.78e-3 0 -135.4e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/compass.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-68.874374e-3 6.414726e-3 134.550735e-3" rpy="0 0 0"/>
+        <mass value="200e-3"/>
+        <inertia ixx="15.998622965" ixy="0.228234406" ixz="0.019697434" iyy="9.471288583" iyz="-0.020465348" izz="25.385537633"/>
+      </inertial>
+    </link>
+
+    <joint name="expansion_chest" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="chest_chassis"/>
+      <child link="expansion_board"/>
+      <origin xyz="31.26e-3 0 -76.94e-3"/>
+    </joint>
+
+    <link name="expansion_board">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/expansion_board.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/expansion_board.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-30.476395e-3 -44.831921e-3 108.771057e-3" rpy="0 0 0"/>
+        <mass value="35e-3"/>
+        <inertia ixx="13.155683237" ixy="-0.019818245" ixz="-0.099426146" iyy="32.373101206" iyz="0.088507484" izz="19.455722737"/>
+      </inertial>
+    </link>
+
+    <joint name="expansion_beaglebone" type="fixed">
+      <parent link="expansion_board"/>
+      <child link="beaglebone"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="beaglebone">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/beaglebone.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/beaglebone.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-34.425621e-3 -52.326832e-3 105.526978e-3" rpy="0 0 0"/>
+        <mass value="40e-3"/>
+        <inertia ixx="10.932820677" ixy="-1.111965118" ixz="0.114190384" iyy="36.394534502" iyz="-0.011368874" izz="26.531304424"/>
+      </inertial>
+    </link>
+
+    <joint name="expansion_ubec" type="fixed">
+      <parent link="expansion_board"/>
+      <child link="ubec"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="ubec">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/ubec.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/chest/ubec.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="3.117789e-3 -38.962219e-3 305.25e-3" rpy="0 0 0"/>
+        <mass value="7.5e-3"/>
+        <inertia ixx="0.449869869" ixy="0.013904256" ixz="-0.000000129" iyy="2.367011516" iyz="-0.000000652" izz="2.033599244"/>
+      </inertial>
+    </link>
+
+  </macro>
+</robot>

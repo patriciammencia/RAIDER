@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="raider">
+  <macro name="arm" params="lr tY">
+
+    <link name="shoulder_${lr}">
+      <collision>
+        <origin xyz="${tY*19.74e-3} -3.3e-3 -119.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/shoulder_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*19.74e-3} -3.3e-3 -119.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/shoulder_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-41.306133e-3} 3.409524e-3 129.948502e-3" rpy="0 0 0"/>
+        <mass value="26e-3"/>
+        <inertia ixx="11.710303909" ixy="${tY*-0.000355401}" ixz="${tY*-1.402315479}" iyy="9.349656034" iyz="0.000185333" izz="14.505300259"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_upper_arm_${lr}" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="1.5" lower="-1.5" velocity="3" effort="100"/>
+      <parent link="shoulder_${lr}"/>
+      <child link="servo_upper_arm_${lr}"/>
+      <origin xyz="${tY*-24e-3} 0 -1e-3" rpy="0 -0.0910695 ${tY*PI/2 + PI/2}"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+
+   <link name="servo_upper_arm_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/servo_upper_arm_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3}  -4e-3 -118.94e-3" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/servo_upper_arm_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*(-76.059296e-3)} 3.228505e-3 308.337189e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*12008673/41834.781250}" ixy="${mass_servo*tY*(-5821.5)/41834.781250}" ixz="${mass_servo*tY*-470478.40625/41834.781250}" iyy="${mass_servo*10172087/41834.781250}" iyz="${mass_servo*(-88968.78125)/41834.781250}" izz="${mass_servo*6682665/41834.781250}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_upperarm_union1_${lr}" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="servo_upper_arm_${lr}"/>
+      <child link="union1_servo_${lr}"/>
+      <origin xyz="0 0 0" rpy="0 0 ${tY*PI/2 + PI/2}"/>
+    </joint>
+
+    <link name="union1_servo_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/union1_servo_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/union1_servo_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-45.191589e-3} 3.468790e-3 80.072578e-3" rpy="0 0 0"/>
+        <mass value="4e-3"/>
+        <inertia ixx="0.590627758" ixy="${tY*0.00000015}" ixz="${tY*0.019347738}" iyy="0.251187499" iyz="0.00000012" izz="0.811914984"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_upperarm_union2_${lr}" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="servo_upper_arm_${lr}"/>
+      <child link="union2_servo_${lr}"/>
+      <origin xyz="0 0 0" rpy="0 0 ${tY*PI/2 + PI/2}"/>
+    </joint>
+
+    <link name="union2_servo_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/union2_servo_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/union2_servo_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-45.626991e-3} 3.451273e-3 75.296814e-3" rpy="0 0 0"/>
+        <mass value="4e-3"/>
+        <inertia ixx="0.255461633" ixy="${tY*-0.000014093}" ixz="${tY*0.048831278}" iyy="0.588954525" iyz="-0.000159133" izz="0.809321022"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_elbowunion_${lr}" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="union2_servo_${lr}"/>
+      <child link="servo_elbow_${lr}"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="servo_elbow_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/servo_elbow_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3} -4e-3 -118.94e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/servo_elbow_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-48.971466e-3} 3.471508e-3 49.196182e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*10118592/41834.781250}" ixy="${mass_servo*tY*1865.812744/41834.781250}" ixz="${mass_servo*tY*-392284.406250/41834.781250}" iyy="${mass_servo*12037051/41834.781250}" iyz="${mass_servo*(-1059.934937)/41834.781250}" izz="${mass_servo*6677542/41834.781250}"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_servo_elbow_${lr}" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="${2*PI/3}" lower="${-2*PI/3}" velocity="3" effort="100"/>
+      <parent link="servo_elbow_${lr}"/>
+      <child link="elbow_${lr}"/>
+      <origin xyz="0 -0.5e-3 -82.65e-3" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="elbow_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -3.5e-3 -36.29e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/elbow_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3} -3.5e-3 -36.29e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/elbow_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-52.549400e-3} 7.686087e-3 26.149841e-3" rpy="0 0 0"/>
+        <mass value="15e-3"/>
+        <inertia ixx="4.397140534" ixy="${tY*0.245999243}" ixz="${tY*0.927496479}" iyy="8.263120442" iyz="-0.566498905" izz="6.876263573"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_elbow_forearm_${lr}" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="elbow_${lr}"/>
+      <child link="forearm_${lr}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="forearm_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -3.5e-3 -36.29e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/forearm_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3} -3.5e-3 -36.29e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/forearm_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-53.241585e-3} 6.205578e-3 -1.415684e-3" rpy="0 0 0"/>
+        <mass value="14e-3"/>
+        <inertia ixx="3.440210914" ixy="${tY*0.018232757}" ixz="${tY*0.095159818}" iyy="4.001844032" iyz="0.207159085" izz="4.51976604"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_sharp_forearm_${lr}" type="fixed">
+      <dynamics damping="0.0" friction="10.0"/>
+      <parent link="forearm_${lr}"/>
+      <child link="sharp_${lr}"/>
+      <origin xyz="${tY*4.03e-3} -11.08e-3 -46.51e-3" rpy="0 0 ${-PI/2}"/>
+    </joint>
+
+    <link name="sharp_${lr}">
+      <collision>
+        <origin xyz="-11.08e-3 ${tY*40.97e-3} 10.22e-3" rpy="0 0 ${PI/2}"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/sharp_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="-11.08e-3 ${tY*40.97e-3} 10.22e-3" rpy="0 0 ${PI/2}"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/sharp_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-55.055099e-3} -1.675636e-3 -6.841179e-3" rpy="0 0 0"/>
+        <mass value="3.5e-3"/>
+        <inertia ixx="0.084903021" ixy="${tY*0.00951706}" ixz="${tY*0.023015952}" iyy="0.338559496" iyz="0.006557898" izz="0.325236131"/>
+      </inertial>
+    </link>
+
+    <joint name="joint_forearm_hand_${lr}" type="fixed">
+      <parent link="forearm_${lr}"/>
+      <child link="hand_${lr}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="hand_${lr}">
+      <collision>
+        <origin xyz="${tY*43.74e-3} -3.5e-3 -36.29e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/hand_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="${tY*43.74e-3} -3.5e-3 -36.29e-3"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/arm_${lr}/hand_${lr}.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="${tY*-57.381317e-3} 7.527186e-3 -48.516449e-3" rpy="0 0 0"/>
+        <mass value="34e-3"/>
+        <inertia ixx="13.839519597" ixy="${tY*-0.01601312}" ixz="${tY*-0.690764395}" iyy="13.107441542" iyz="-0.183076833" izz="6.004466355"/>
+      </inertial>
+    </link>
+
+  </macro>
+</robot>

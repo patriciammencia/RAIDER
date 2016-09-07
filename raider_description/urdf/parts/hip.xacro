@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="raider">
+  <macro name="hip">
+    <link name="upper_hip">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/upper_hip.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/upper_hip.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="0.000005e-3 -6.968965e-3 74.913368e-3" rpy="0 0 0"/>
+        <mass value="5e-3"/>
+        <inertia ixx="1.477029903" ixy="-0.000000099" ixz="0.000000796" iyy="1.164759175" iyz="-0.00047014" izz="2.628691944"/>
+      </inertial>
+    </link>
+
+    <joint name="servo_upperhip_middle" type="fixed">
+      <parent link="servo_hip_middle"/>
+      <child link="upper_hip"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="servo_hip_middle">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/servo_hip_middle.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/servo_hip_middle.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-0.002708e-3 -12.799425e-3 57.999710e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*12049574/41834.78125}" ixy="${mass_servo*-898.065918/41834.78125}" ixz="${mass_servo*1956.940552/41834.78125}" iyy="${mass_servo*6641437/41834.78125}" iyz="${mass_servo*-89133.273438/41834.78125}" izz="${mass_servo*10171655/41834.78125}"/>
+      </inertial>
+    </link>
+
+    <joint name="servo_hipchassis_middle" type="fixed">
+      <parent link="hip_chassis"/>
+      <child link="servo_hip_middle"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="hip_chassis">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/hip_chassis.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/hip_chassis.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="0 8.793029e-3 50.608299e-3" rpy="0 0 0"/>
+        <mass value="16e-3"/>
+        <inertia ixx="5.191173851" ixy="0.000000575" ixz="-0.000000273" iyy="4.106148647" iyz="-1.012029816" izz="5.375464492"/>
+      </inertial>
+    </link>
+
+    <joint name="bracket_servo_right" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
+      <parent link="servo_hip_right"/>
+      <child link="leg_bracket_right"/>
+      <origin xyz="32e-3 -21e-3 31e-3"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="servo_middle_right" type="fixed">
+      <parent link="servo_hip_middle"/>
+      <child link="servo_hip_right"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <joint name="servo_middle_left" type="fixed">
+      <parent link="servo_hip_middle"/>
+      <child link="servo_hip_left"/>
+      <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="servo_hip_left">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/servo_hip_left.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/servo_hip_left.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="-32.002708e-3 -8.200576e-3 55.880287e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*12049575/41834.78125}" ixy="${mass_servo*898.116455/41834.78125}" ixz="${mass_servo*-1957.101929/41834.78125}" iyy="${mass_servo*6641438/41834.78125}" iyz="${mass_servo*-89133.156250/41834.78125}" izz="${mass_servo*10171655/41834.78125}"/>
+      </inertial>
+    </link>
+
+    <joint name="bracket_servo_left" type="revolute">
+      <dynamics damping="0.0" friction="0.0"/>
+      <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
+      <parent link="servo_hip_left"/>
+      <child link="leg_bracket_left"/>
+      <origin xyz="-32e-3 -21e-3 31e-3" rpy="0 ${PI} 0"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="servo_hip_right">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/servo_hip_right.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://raider_description/meshes/hip/servo_hip_right.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <origin xyz="31.997292e-3 -8.200576e-3 55.880287e-3" rpy="0 0 0"/>
+        <mass value="${mass_servo}"/>
+        <inertia ixx="${mass_servo*12049552/41834.78125}" ixy="${mass_servo*898.090698/41834.78125}" ixz="${mass_servo*-1956.938599/41834.78125}" iyy="${mass_servo*6641408.5/41834.78125}" iyz="${mass_servo*-89132.632812/41834.78125}" izz="${mass_servo*10171655/41834.78125}"/>
+      </inertial>
+    </link>
+
+  </macro>
+</robot>

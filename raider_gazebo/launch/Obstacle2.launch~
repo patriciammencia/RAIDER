@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>	  
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">	    
+		<!--arg name="world_name" value="$(find hector_gazebo_worlds)/worlds/sick_robot_day_2012_20m.world"/-->	    
+	    <arg name="world_name" value="$(find raider_gazebo)/worlds/Obstacle1.world"/>	    
+		<arg name="gui" value="true"/>	  
+	</include>
+<!-- Robot pose -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0.231"/>
+    <!--arg name="z" default="0.201"/-->
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <!--Girado PI radianes -->
+  <arg name="yaw" default="-1.570796327"/>
+
+
+<!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
+<param name="robot_description" command="$(find xacro)/xacro.py '$(find raider_description)/urdf/raider.xacro'" />
+
+<!-- push robot_description to factory and spawn robot in gazebo -->
+<node name="raider_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+ args="-param robot_description -urdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model raider" />
+ 	
+</launch>
+
