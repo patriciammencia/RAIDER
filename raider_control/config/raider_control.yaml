@@ -1,0 +1,118 @@
+raider:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  # POSITION CONTROLLERS
+
+  neck_position_controller:
+    type: position_controllers/JointPositionController
+    joint: neck
+    
+
+  chest_position_controller:
+    type: position_controllers/JointPositionController
+    joint: chest
+    
+
+  shoulder_left_swing_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulder_left_swing
+    
+
+  shoulder_right_swing_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulder_right_swing
+    
+
+  shoulder_right_lateral_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulder_right_lateral
+    
+
+  shoulder_left_lateral_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulder_left_lateral
+    
+
+  elbow_right_position_controller:
+    type: position_controllers/JointPositionController
+    joint: elbow_right
+    
+
+  elbow_left_position_controller:
+    type: position_controllers/JointPositionController
+    joint: elbow_left
+    
+
+  groin_right_position_controller:
+    type: position_controllers/JointPositionController
+    joint: groin_right
+    
+
+  groin_left_position_controller:
+    type: position_controllers/JointPositionController
+    joint: groin_left
+    
+
+  hip_right_lateral_position_controller:
+    type: position_controllers/JointPositionController
+    joint: hip_right_lateral
+    
+
+  hip_left_lateral_position_controller:
+    type: position_controllers/JointPositionController
+    joint: hip_left_lateral
+    
+
+  hip_right_swing_position_controller:
+    type: position_controllers/JointPositionController
+    joint: hip_right_swing
+    
+
+  hip_left_swing_position_controller:
+    type: position_controllers/JointPositionController
+    joint: hip_left_swing
+    
+
+  ankle_right_swing_position_controller:
+    type: position_controllers/JointPositionController
+    joint: ankle_right_swing
+    
+
+  ankle_left_swing_position_controller:
+    type: position_controllers/JointPositionController
+    joint: ankle_left_swing
+    
+
+  ankle_right_lateral_position_controller:
+    type: position_controllers/JointPositionController
+    joint: ankle_right_lateral
+    
+
+  ankle_left_lateral_position_controller:
+    type: position_controllers/JointPositionController
+    joint: ankle_left_lateral
+    
+
+  lower_knee_right_position_controller:
+    type: position_controllers/JointPositionController
+    joint: lower_knee_right
+    
+
+  lower_knee_left_position_controller:
+    type: position_controllers/JointPositionController
+    joint: lower_knee_left
+    
+
+  upper_knee_right_position_controller:
+    type: position_controllers/JointPositionController
+    joint: upper_knee_right
+    
+
+  upper_knee_left_position_controller:
+    type: position_controllers/JointPositionController
+    joint: upper_knee_left
+    
+
+ 
