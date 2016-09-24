@@ -6,7 +6,6 @@
 <xacro:property name="mass_servo" value="55e-3"/>
 
 <xacro:include filename="$(find raider_description)/urdf/raider.gazebo" />
-<xacro:include filename="$(find raider_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find raider_description)/urdf/parts/leg.xacro" />
 <xacro:include filename="$(find raider_description)/urdf/parts/hip.xacro" />
 <xacro:include filename="$(find raider_description)/urdf/parts/chest.xacro" />
@@ -21,7 +20,7 @@
  <origin xyz="0 0 0"/>
 </joint>
 
-<joint name="upperhip_chest" type="fixed">
+<joint name="chest" type="revolute">
   <dynamics damping="0.0" friction="0.0"/>
   <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
   <parent link="upper_hip"/>
@@ -52,7 +51,7 @@
 <head />
 
 <!--Arm right -->
-<joint name="servo_shoulder_right" type="fixed">
+<joint name="shoulder_right_swing" type="revolute">
   <dynamics damping="0.0" friction="0.0"/>
   <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
   <parent link="servo_shoulder_right"/>
@@ -64,7 +63,7 @@
 <arm lr="right" tY="-1"/>
 
 <!--Arm right -->
-<joint name="servo_shoulder_left" type="fixed">
+<joint name="shoulder_left_swing" type="revolute">
   <dynamics damping="0.0" friction="0.0"/>
   <limit upper="${PI}" lower="${-PI}" velocity="3" effort="100"/>
   <parent link="servo_shoulder_left"/>

@@ -18,11 +18,11 @@
       <inertial>
         <origin xyz="${tY*-41.306133e-3} 3.409524e-3 129.948502e-3" rpy="0 0 0"/>
         <mass value="26e-3"/>
-        <inertia ixx="11.710303909" ixy="${tY*-0.000355401}" ixz="${tY*-1.402315479}" iyy="9.349656034" iyz="0.000185333" izz="14.505300259"/>
+        <inertia ixx="1.1710303909e-2" ixy="${tY*-3.55401e-7}" ixz="${tY*-1.402315479e-3}" iyy="9.349656034e-3" iyz="1.85333e-7" izz="1.4505300259e-2"/>
       </inertial>
     </link>
 
-    <joint name="joint_servo_upper_arm_${lr}" type="revolute">
+    <joint name="shoulder_${lr}_lateral" type="revolute">
       <dynamics damping="0.0" friction="0.0"/>
       <limit upper="1.5" lower="-1.5" velocity="3" effort="100"/>
       <parent link="shoulder_${lr}"/>
@@ -47,7 +47,7 @@
       <inertial>
         <origin xyz="${tY*(-76.059296e-3)} 3.228505e-3 308.337189e-3" rpy="0 0 0"/>
         <mass value="${mass_servo}"/>
-        <inertia ixx="${mass_servo*12008673/41834.781250}" ixy="${mass_servo*tY*(-5821.5)/41834.781250}" ixz="${mass_servo*tY*-470478.40625/41834.781250}" iyy="${mass_servo*10172087/41834.781250}" iyz="${mass_servo*(-88968.78125)/41834.781250}" izz="${mass_servo*6682665/41834.781250}"/>
+        <inertia ixx="${mass_servo*12008673e-3/41834.781250}" ixy="${mass_servo*tY*(-5821.5e-3)/41834.781250}" ixz="${mass_servo*tY*-470478.40625e-3/41834.781250}" iyy="${mass_servo*10172087e-3/41834.781250}" iyz="${mass_servo*(-88968.78125e-3)/41834.781250}" izz="${mass_servo*6682665e-3/41834.781250}"/>
       </inertial>
     </link>
 
@@ -74,7 +74,7 @@
       <inertial>
         <origin xyz="${tY*-45.191589e-3} 3.468790e-3 80.072578e-3" rpy="0 0 0"/>
         <mass value="4e-3"/>
-        <inertia ixx="0.590627758" ixy="${tY*0.00000015}" ixz="${tY*0.019347738}" iyy="0.251187499" iyz="0.00000012" izz="0.811914984"/>
+        <inertia ixx="5.90627758e-4" ixy="${tY*1.5e-10}" ixz="${tY*1.9347738e-5}" iyy="2.51187499e-4" iyz="1.2e-7" izz="8.11914984e-4"/>
       </inertial>
     </link>
 
@@ -101,7 +101,7 @@
       <inertial>
         <origin xyz="${tY*-45.626991e-3} 3.451273e-3 75.296814e-3" rpy="0 0 0"/>
         <mass value="4e-3"/>
-        <inertia ixx="0.255461633" ixy="${tY*-0.000014093}" ixz="${tY*0.048831278}" iyy="0.588954525" iyz="-0.000159133" izz="0.809321022"/>
+        <inertia ixx="2.55461633e-4" ixy="${tY*-1.4093e-8}" ixz="${tY*4.8831278e-5}" iyy="5.88954525e-4" iyz="-1.59133e-7" izz="8.09321022e-4"/>
       </inertial>
     </link>
 
@@ -128,11 +128,11 @@
       <inertial>
         <origin xyz="${tY*-48.971466e-3} 3.471508e-3 49.196182e-3" rpy="0 0 0"/>
         <mass value="${mass_servo}"/>
-        <inertia ixx="${mass_servo*10118592/41834.781250}" ixy="${mass_servo*tY*1865.812744/41834.781250}" ixz="${mass_servo*tY*-392284.406250/41834.781250}" iyy="${mass_servo*12037051/41834.781250}" iyz="${mass_servo*(-1059.934937)/41834.781250}" izz="${mass_servo*6677542/41834.781250}"/>
+        <inertia ixx="${mass_servo*10118592e-3/41834.781250}" ixy="${mass_servo*tY*1865.812744e-3/41834.781250}" ixz="${mass_servo*tY*-392284.406250e-3/41834.781250}" iyy="${mass_servo*12037051e-3/41834.781250}" iyz="${mass_servo*(-1059.934937e-3)/41834.781250}" izz="${mass_servo*6677542e-3/41834.781250}"/>
       </inertial>
     </link>
 
-    <joint name="joint_servo_elbow_${lr}" type="revolute">
+    <joint name="elbow_${lr}" type="revolute">
       <dynamics damping="0.0" friction="0.0"/>
       <limit upper="${2*PI/3}" lower="${-2*PI/3}" velocity="3" effort="100"/>
       <parent link="servo_elbow_${lr}"/>
@@ -157,7 +157,7 @@
       <inertial>
         <origin xyz="${tY*-52.549400e-3} 7.686087e-3 26.149841e-3" rpy="0 0 0"/>
         <mass value="15e-3"/>
-        <inertia ixx="4.397140534" ixy="${tY*0.245999243}" ixz="${tY*0.927496479}" iyy="8.263120442" iyz="-0.566498905" izz="6.876263573"/>
+        <inertia ixx="4.397140534e-3" ixy="${tY*2.45999243e-4}" ixz="${tY*9.27496479e-4}" iyy="8.263120442e-3" iyz="-5.66498905e-4" izz="6.876263573e-4"/>
       </inertial>
     </link>
 
@@ -184,7 +184,7 @@
       <inertial>
         <origin xyz="${tY*-53.241585e-3} 6.205578e-3 -1.415684e-3" rpy="0 0 0"/>
         <mass value="14e-3"/>
-        <inertia ixx="3.440210914" ixy="${tY*0.018232757}" ixz="${tY*0.095159818}" iyy="4.001844032" iyz="0.207159085" izz="4.51976604"/>
+        <inertia ixx="3.440210914e-3" ixy="${tY*1.8232757e-5}" ixz="${tY*9.5159818e-5}" iyy="4.001844032e-3" iyz="2.07159085e-3" izz="4.51976604e-3"/>
       </inertial>
     </link>
 
@@ -211,7 +211,7 @@
       <inertial>
         <origin xyz="${tY*-55.055099e-3} -1.675636e-3 -6.841179e-3" rpy="0 0 0"/>
         <mass value="3.5e-3"/>
-        <inertia ixx="0.084903021" ixy="${tY*0.00951706}" ixz="${tY*0.023015952}" iyy="0.338559496" iyz="0.006557898" izz="0.325236131"/>
+        <inertia ixx="8.4903021e-3" ixy="${tY*9.51706e-6}" ixz="${tY*2.3015952e-3}" iyy="3.38559496e-4" iyz="6.557898e-6" izz="3.25236131e-4"/>
       </inertial>
     </link>
 
@@ -237,7 +237,7 @@
       <inertial>
         <origin xyz="${tY*-57.381317e-3} 7.527186e-3 -48.516449e-3" rpy="0 0 0"/>
         <mass value="34e-3"/>
-        <inertia ixx="13.839519597" ixy="${tY*-0.01601312}" ixz="${tY*-0.690764395}" iyy="13.107441542" iyz="-0.183076833" izz="6.004466355"/>
+        <inertia ixx="1.3839519597e-2" ixy="${tY*-1.601312e-5}" ixz="${tY*-6.90764395e-4}" iyy="1.3107441542e-2" iyz="-1.83076833e-4" izz="6.004466355e-3"/>
       </inertial>
     </link>
 

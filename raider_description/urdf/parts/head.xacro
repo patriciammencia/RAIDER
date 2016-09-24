@@ -18,11 +18,11 @@
       <inertial>
         <origin xyz="-34.699566e-3 6.703261e-3 139.939987e-3" rpy="0 0 0"/>
         <mass value="13.4e-3"/>
-        <inertia ixx="0.79631024" ixy="0.071080342" ixz="0.000010505" iyy="0.707342537" iyz="-0.000000896" izz="1.203373945"/>
+        <inertia ixx="7.9631024e-4" ixy="7.1080342e-4" ixz="1.0505e-8" iyy="7.07342537e-4" iyz="-8.96e-10" izz="1.203373945e-3"/>
       </inertial>
     </link>
 
-    <joint name="chest_head" type="revolute">
+    <joint name="neck" type="revolute">
       <dynamics damping="0.0" friction="0.0"/>
       <limit upper="0" lower="-1" velocity="3" effort="100"/>
       <parent link="chest_chassis"/>
@@ -47,7 +47,7 @@
       <inertial>
         <origin xyz="-31.180738e-3 -2.366833e-3 164.260635e-3" rpy="0 0 0"/>
         <mass value="44e-3"/>
-        <inertia ixx="23.419764683" ixy="-0.17967725" ixz="0.136503491" iyy="17.645258196" iyz="0.830629778" izz="26.684106335"/>
+        <inertia ixx="2.3419764683e-2" ixy="-1.7967725e-4" ixz="1.36503491e-4" iyy="1.7645258196e-2" iyz="8.30629778e-4" izz="2.6684106335e-2"/>
       </inertial>
     </link>
 
@@ -74,7 +74,7 @@
       <inertial>
         <origin xyz="-49.879631e-3 9.112244e-3 143.111343e-3" rpy="0 0 0"/>
         <mass value="1e-3"/>
-        <inertia ixx="0.034414067" ixy="-0.002039668" ixz="0.001999204" iyy="0.017986123" iyz="0.014190635" izz="0.01857552"/>
+        <inertia ixx="3.4414067e-5" ixy="-2.039668e-6" ixz="1.999204e-6" iyy="1.7986123e-5" iyz="1.4190635e-5" izz="1.857552e-5"/>
       </inertial>
     </link>
 
@@ -101,9 +101,10 @@
       <inertial>
         <origin xyz="-31.209848e-3 19.280575e-3 167.859589e-3" rpy="0 0 0"/>
         <mass value="3e-3"/>
-        <inertia ixx="0.151655121" ixy="0.000177538" ixz="-0.001218298" iyy="0.384780168" iyz="-0.000285021" izz="0.278011012"/>
+        <inertia ixx="1.51655121e-4" ixy="1.77538e-7" ixz="-1.218298e-6" iyy="3.84780168e-4" iyz="-2.85021e-7" izz="2.78011012e-4"/>
       </inertial>
     </link>
+    
     <joint name="cover_head" type="fixed">
       <dynamics damping="0.0" friction="10.0"/>
       <parent link="head"/>
@@ -127,7 +128,7 @@
       <inertial>
         <origin xyz="-24.260002e-3 -35.900002e-3 161.992737e-3" rpy="0 0 0"/>
         <mass value="3e-4"/>
-        <inertia ixx="0.001401112" ixy="0.000000002" ixz="-0.00000033" iyy="0.011750281" iyz="0.000000934" izz="0.010548865"/>
+        <inertia ixx="1.401112e-6" ixy="2e-12" ixz="-3.3e-10" iyy="1.1750281e-5" iyz="9.34e-10" izz="1.0548865e-5"/>
       </inertial>
     </link>
 
@@ -154,7 +155,7 @@
       <inertial>
         <origin xyz="-31.260019e-3 13.105232e-3 167.940002e-3" rpy="0 0 0"/>
         <mass value="95.3e-3"/>
-        <inertia ixx="6.166010606" ixy="-0.000004779" ixz="0.000019444" iyy="3.256684062" iyz="0.000002913" izz="6.494934716"/>
+        <inertia ixx="6.166010606e-3" ixy="-4.779e-9" ixz="1.9444e-8" iyy="3.256684062e-3" iyz="2.913e-9" izz="6.494934716e-3"/>
       </inertial>
     </link>
   </macro>
