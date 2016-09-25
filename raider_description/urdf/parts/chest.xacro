@@ -70,9 +70,9 @@
         </geometry>
       </visual>
       <inertial>
-        <origin xyz="-30.197001e-3 -44.700001e-3 91.440002e-3" rpy="0 0 0"/>
-        <mass value="158e-3"/>
-        <inertia ixx="22.109350504618" ixy="-1.350018e-6" ixz="3.879992e-6" iyy="128.618785627577" iyz="3.7398901e-5" izz="122.602078416133"/>
+        <origin xyz="1.062995e-3 -48.5e-3 56.44e-3" rpy="0 0 0"/>
+        <mass value="109e-3"/>
+        <inertia ixx="1.52527e-4" ixy="3.27e-10" ixz="-3.529795e-6" iyy="8.8730716716e-2" iyz="2.4012e-8" izz="8.4579923136e-2"/>
       </inertial>
     </link>
 
@@ -82,15 +82,7 @@
       <child link="accelerometer"/>
       <origin xyz="30.67e-3 -25.94e-3 -4e-3"/>
     </joint>
-    
-  <!--joint name="joint_accelerometer_chest" type="revolute">
-      <dynamics damping="0.0" friction="0.0"/>
-      <limit upper="0" lower="0" velocity="0" effort="100"/>
-      <parent link="chest_chassis"/>
-      <child link="accelerometer"/>
-      <origin xyz="30.67e-3 -25.94e-3 -4e-3"/>
-      <axis xyz="0 1 0"/>
-    </joint-->
+   
 
     <link name="accelerometer">
       <collision>
@@ -135,8 +127,8 @@
       <inertial>
         <origin xyz="-63.315582e-3 3.302713e-3 107.129585e-3" rpy="0 0 0"/>
         <mass value="${mass_servo}"/>
-        <inertia ixx="${mass_servo*10159775e-3/41810.292969}" ixy="${mass_servo*1955.209106e-3/41810.292969}" ixz="${mass_servo*86846.789062e-3/41810.292969}" 
-			iyy="${mass_servo*12035494e-3/41810.292969}" iyz="${mass_servo*894.308777e-3/41810.292969}" izz="${mass_servo*6634501e-3/41810.292969}"/>
+        <inertia ixx="1.3356931987e-4" ixy="2.570283e-6" ixz="1.14185394e-4" 
+			iyy="1.5822969271e-4" iyz="1.176189e-6" izz="8.7223651e-3"/>
       </inertial>
     </link>
 
@@ -163,8 +155,8 @@
       <inertial>
         <origin xyz="0.799711e-3 3.297292e-3 107.140572e-3" rpy="0 0 0"/>
         <mass value="${mass_servo}"/>
-        <inertia ixx="${mass_servo*10171655e-3/41810.292969}" ixy="${mass_servo*1956.694946e-3/41810.292969}" ixz="${mass_servo*-89133.1875e-3/41810.292969}" 
-			iyy="${mass_servo*12049550e-3/41810.292969}" iyz="${mass_servo*-898.128174e-3/41810.292969}" izz="${mass_servo*6641424e-3/41810.292969}"/>
+        <inertia ixx="1.3356942504e-2" ixy="2.56949e-6" ixz="-1.14164863e-4" 
+			iyy="1.14164863e-4" iyz="1.5822945607e-2" izz="8.722356554e-3"/>
       </inertial>
     </link>
 
@@ -208,15 +200,6 @@
       <child link="compass"/>
       <origin xyz="-42.52e-3 0 58.46e-3"/>
     </joint>
-
-  <!--joint name="compass_chest" type="revolute">
-      <dynamics damping="0.0" friction="0.0"/>
-      <limit upper="0" lower="0" velocity="0" effort="100"/>
-      <parent link="chest_chassis"/>
-      <child link="compass"/>
-      <origin xyz="-42.52e-3 0 58.46e-3"/>
-      <axis xyz="0 1 0"/>
-    </joint-->
 
     <link name="compass">
       <collision>

@@ -45,9 +45,9 @@
         </geometry>
       </visual>
       <inertial>
-        <origin xyz="${tY*(-76.059296e-3)} 3.228505e-3 308.337189e-3" rpy="0 0 0"/>
+        <origin xyz="${tY*(-43.683769e-3)} 4.528502e-3 106.228104e-3" rpy="0 0 0"/>
         <mass value="${mass_servo}"/>
-        <inertia ixx="${mass_servo*12008673e-3/41834.781250}" ixy="${mass_servo*tY*(-5821.5e-3)/41834.781250}" ixz="${mass_servo*tY*-470478.40625e-3/41834.781250}" iyy="${mass_servo*10172087e-3/41834.781250}" iyz="${mass_servo*(-88968.78125e-3)/41834.781250}" izz="${mass_servo*6682665e-3/41834.781250}"/>
+        <inertia ixx="1.5841490372e-4" ixy="${tY*2.571e-6}" ixz="${tY*1.194e-6}" iyy="-2.571e-6" iyz="1.3372638e-2" izz="8.731449e-3"/>
       </inertial>
     </link>
 
@@ -126,9 +126,9 @@
         </geometry>
       </visual>
       <inertial>
-        <origin xyz="${tY*-48.971466e-3} 3.471508e-3 49.196182e-3" rpy="0 0 0"/>
+        <origin xyz="${tY*-44.74e-3} 3.471498e-3 48.827362e-3" rpy="0 0 0"/>
         <mass value="${mass_servo}"/>
-        <inertia ixx="${mass_servo*10118592e-3/41834.781250}" ixy="${mass_servo*tY*1865.812744e-3/41834.781250}" ixz="${mass_servo*tY*-392284.406250e-3/41834.781250}" iyy="${mass_servo*12037051e-3/41834.781250}" iyz="${mass_servo*(-1059.934937e-3)/41834.781250}" izz="${mass_servo*6677542e-3/41834.781250}"/>
+        <inertia ixx="1.3372631e-2" ixy="${tY*2.572816e-6}" ixz="${tY*-1.17185437e-4}" iyy="1.5841492015e-2" iyz="-1.180748e-6" izz="8.73145096e-3"/>
       </inertial>
     </link>
 

@@ -6,8 +6,8 @@
 		<arg name="gui" value="true"/>	  
 	</include>
 <!-- Robot pose -->
-  <arg name="x" default="1"/>
-  <arg name="y" default="1"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
   <arg name="z" default="0.231"/>
     <!--arg name="z" default="0.201"/-->
   <arg name="roll" default="0"/>

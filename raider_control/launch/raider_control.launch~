@@ -5,7 +5,7 @@
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/" args="
+    output="screen" ns="/raider" args="
     neck_position_controller
     chest_position_controller
     shoulder_left_swing_position_controller
@@ -27,6 +27,30 @@
     lower_knee_right_position_controller
     lower_knee_left_position_controller
     upper_knee_right_position_controller
+    upper_knee_left_position_controller
+    joint_state_controller
+
+    neck_velocity_controller
+    chest_velocity_controller
+    shoulder_left_swing_velocity_controller
+    shoulder_right_swing_velocity_controller
+    shoulder_right_lateral_velocity_controller
+    shoulder_left_lateral_velocity_controller
+    elbow_right_velocity_controller
+    elbow_left_velocity_controller
+    groin_right_velocity_controller
+    groin_left_velocity_controller
+    hip_right_lateral_velocity_controller
+    hip_left_lateral_velocity_controller
+    hip_right_swing_velocity_controller
+    hip_left_swing_velocity_controller
+    ankle_right_swing_velocity_controller
+    ankle_left_swing_velocity_controller
+    ankle_right_lateral_velocity_controller
+    ankle_left_lateral_velocity_controller
+    lower_knee_right_velocity_controller
+    lower_knee_left_velocity_controller
+    upper_knee_right_velocity_controller
     upper_knee_left_position_controller
     joint_state_controller"/>
 

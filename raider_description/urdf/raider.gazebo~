@@ -1,53 +1,6 @@
 <?xml version="1.0"?>
 <robot name="raider" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- Head materials-->
-  <gazebo reference="arm_microservo">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff>
-      <mu1>100</mu1>
-      <mu2>100</mu2-->
-    <material>Gazebo/DarkGrey</material>
-  </gazebo>
-  <gazebo reference="head">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff>
-      <mu1>100</mu1>
-      <mu2>100</mu2-->
-    <material>Gazebo/Red</material>
-  </gazebo>
-  <gazebo reference="lifecam">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff>
-      <mu1>100</mu1>
-      <mu2>100</mu2-->
-    <material>Gazebo/Orange</material>
-  </gazebo>
-  <gazebo reference="microservo">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff>
-      <mu1>100</mu1>
-      <mu2>100</mu2-->
-    <material>Gazebo/FlatBlack</material>
-  </gazebo>
-  <gazebo reference="chassis_lifecam">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff>
-      <mu1>100</mu1>
-      <mu2>100</mu2-->
-    <!--material>Gazebo/DarkGrey</material-->
-  </gazebo>
-
 <!-- LifeCam plugin -->
 <gazebo reference="lifecam">
     <sensor type="camera" name="camera1">
@@ -208,420 +161,273 @@
     </plugin>
   </gazebo>
 	
-    <!-- Chest materials-->
-    <gazebo reference="chest_chassis">
-      <!--mu1>0.5</mu1>
-      <mu2>50</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-    </gazebo>
-    <gazebo reference="servo_shoulder_right">
-      <!--mu1>0.5</mu1>
-      <mu2>50</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="cover_head">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="compass">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Grass</material>
-    </gazebo>
-    <gazebo reference="servo_shoulder_left">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="battery">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Yellow</material>
-    </gazebo>
-    <gazebo reference="ultrasonic_sensor">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/BlueEmissive</material>
-    </gazebo>
-    <gazebo reference="ubec">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/BlueEmissive</material>
-    </gazebo>
-    <gazebo reference="accelerometer">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Grass</material>
-    </gazebo>
-    <gazebo reference="expansion_board">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Gold</material>
-    </gazebo>
-
-    <!-- Hip materials-->
-    <gazebo reference="servo_hip_right">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="servo_hip_left">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="servo_hip_middle">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="upper_hip">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="hip_chassis">
-      <!--mu1>0.5</mu1>
-      <mu2>100</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <!-- Arm materials-->
-    <gazebo reference="shoulder_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="shoulder_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="elbow_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="elbow_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="servo_upper_arm_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="servo_upper_arm_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="servo_elbow_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="servo_elbow_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="forearm_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="forearm_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-    <gazebo reference="hand_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/Red</material>
-    </gazebo>
-   <gazebo reference="hand_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="union2_servo_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="union2_servo_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="union1_servo_left">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-    <gazebo reference="union1_servo_right">
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <!-- Leg materials-->
-    <gazebo reference="servo_foot_left">
-      <!--mu1>0.5</mu1>
-      <mu2>50</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--selfCollide>true</selfCollide-->
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_foot_right">
-      <!--mu1>0.5</mu1>
-      <mu2>50</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--selfCollide>true</selfCollide-->
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_lower_knee_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <!--selfCollide>true</selfCollide-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_lower_knee_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <!--selfCollide>true</selfCollide-->
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="foot_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--selfCollide>true</selfCollide-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="foot_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--selfCollide>true</selfCollide-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_upper_knee_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_upper_knee_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <!--mu1>200</mu1>
-      <mu2>200</mu2-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_upper_front_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_upper_front_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_upper_back_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_upper_back_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="lower_leg_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <gazebo reference="lower_leg_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <gazebo reference="upper_leg_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <gazebo reference="upper_leg_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <gazebo reference="leg_bracket_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <gazebo reference="leg_bracket_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <material>Gazebo/Red</material>
-    </gazebo>
-
-    <gazebo reference="servo_footback_foot_left">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
-    <gazebo reference="servo_footback_foot_right">
-      <!--mu1>0.5</mu1>
-      <mu2>200</mu2>
-      <selfCollide>false</selfCollide>
-      <turnGravityOff>true</turnGravityOff-->
-      <selfCollide>false</selfCollide>
-      <material>Gazebo/DarkGrey</material>
-    </gazebo>
-
+   
 <gazebo>
-  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+  <plugin name="gazebo_ros_control_raider" filename="libgazebo_ros_control.so">
+    <robotNamespace>/raider</robotNamespace>
+    <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
   </plugin>
 </gazebo>
 
- <transmission name="servo_upper_arm_left_tran">
+ <transmission name="shoulder_left_swing_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_servo_upper_arm_left">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <joint name="shoulder_left_swing">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
     </joint>
-    <actuator name="joint_servo_upper_arm_left_motor">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <actuator name="shoulder_left_swing_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="shoulder_right_swing_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_right_swing">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="shoulder_right_swing_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+    <transmission name="hip_right_swing_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hip_right_swing">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hip_right_swing_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+      <transmission name="hip_left_swing_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hip_left_swing">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hip_left_swing_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+    <transmission name="hip_right_lateral_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hip_right_lateral">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hip_right_lateral_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+      <transmission name="hip_left_lateral_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hip_left_lateral">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hip_left_lateral_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+   <transmission name="ankle_right_swing_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ankle_right_swing">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ankle_right_swing_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+    <transmission name="ankle_left_swing_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ankle_left_swing">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ankle_left_swing_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
- <transmission name="joint_servoupperback_legbracket_right_tran">
+ <transmission name="ankle_right_lateral_trans">
     <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_servoupperback_legbracket_left">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <joint name="ankle_right_lateral">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
     </joint>
-    <actuator name="joint_servoupperback_legbracket_right_motor">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <actuator name="ankle_right_lateral_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+    <transmission name="ankle_left_lateral_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ankle_left_lateral">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ankle_left_lateral_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+      <transmission name="lower_knee_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lower_knee_left">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="lower_knee_left_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+        <transmission name="lower_knee_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="lower_knee_right">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="lower_knee_right_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+        <transmission name="upper_knee_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upper_knee_left">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="upper_knee_left_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+        <transmission name="upper_knee_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="upper_knee_right">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="upper_knee_right_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+          <transmission name="neck_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="neck">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="neck_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+            <transmission name="elbow_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_right">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="elbow_right_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+              <transmission name="elbow_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbow_left">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="elbow_left_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="chest_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="chest">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="chest_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+    <transmission name="groin_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="groin_right">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="groin_right_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+      <transmission name="groin_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="groin_left">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="groin_left_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+        <transmission name="shoulder_right_lateral_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_right_lateral">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="shoulder_right_lateral_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+          <transmission name="shoulder_left_lateral_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulder_left_lateral">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="shoulder_left_lateral_motor">
+      <hardwareInterface>PosVelJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
+<gazebo reference = "foot_left">
+    <mu1>10000</mu1>
+    <mu2>10000</mu2>
+    <kp>1000000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxContacts>1</maxContacts>
+</gazebo>
+
+
+<gazebo reference = "foot_right">
+    <mu1>10000</mu1>
+    <mu2>10000</mu2>
+    <kp>1000000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxContacts>1</maxContacts>
+</gazebo>
   
 </robot>

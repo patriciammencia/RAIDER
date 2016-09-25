@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <launch>	  
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">	    
-		<!--arg name="world_name" value="$(find hector_gazebo_worlds)/worlds/sick_robot_day_2012_20m.world"/-->	    
-	    <arg name="world_name" value="$(find raider_gazebo)/worlds/Obstacle4.world"/>	    
-		<arg name="gui" value="true"/>	  
+		<arg name="world_name" value="$(find raider_gazebo)/worlds/Obstacle4.world"/>	    
+		<arg name="gui" value="true"/>	 
+		<arg name="paused" value="true"/> 
 	</include>
+
 <!-- Robot pose -->
   <arg name="x" default="0"/>
   <arg name="y" default="0"/>
@@ -22,6 +23,8 @@
 <!-- push robot_description to factory and spawn robot in gazebo -->
 <node name="raider_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
  args="-param robot_description -urdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model raider" />
+
+<include file="$(find raider_control)/launch/raider_control.launch"/>
  	
 </launch>
 

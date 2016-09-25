@@ -2,7 +2,7 @@
 <launch>	  
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">	    
 		<!--arg name="world_name" value="$(find hector_gazebo_worlds)/worlds/sick_robot_day_2012_20m.world"/-->	    
-	    <arg name="world_name" value="$(find raider_gazebo)/worlds/Stairs.world"/>	    
+	    <arg name="world_name" value="$(find raider_gazebo)/worlds/Sumo.world"/>	    
 		<arg name="gui" value="true"/>	  
 	</include>
 <!-- Robot pose -->
